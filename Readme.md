@@ -9,3 +9,4 @@ LN_Calculator is a project whose objective is to permit young programmers experi
 ## Tata Ngwa Billy
 ## Tchinda Romaric
 ## Emboh Mireille
+## Imbia Randy

@@ -4,4 +4,3 @@ LN_Calculator is a project whose objective is to permit young programmers experi
 
 # Contributors
 ## Kambang Sinclaire 
-## Tchinda Romaric

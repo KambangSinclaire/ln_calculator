@@ -35,8 +35,14 @@ arithmeticOperators.forEach(operator => {
         let result;
 
         if (clickedOperator == '=') {
-            result = eval(operationsScreen.value);
-            answerScreen.value = result;
+            const { operation, value } = operationParser(operationsScreen.value);
+            if (operation && value) {
+                // This is a scientific operation
+                answerScreen.value = science(operation, value);
+            } else {
+                result = eval(operationsScreen.value);
+                answerScreen.value = result;
+            }
         } else {
             operationsScreen.value += clickedOperator;
         }
@@ -65,3 +71,44 @@ allCalcFunctions.forEach(func => {
 });
 
 // Listen for scientific operations
+scientificOperators.forEach(operator => {
+    operator.addEventListener('click', (event) => {
+        event.preventDefault();
+        const clickedScientificOperator = event.target.innerText;
+        operationsScreen.value += clickedScientificOperator + '(';
+
+        if (clickedScientificOperator == 'tan') {
+
+        }
+    });
+})
+
+function operationParser(operation = '') {
+    const scientificOps = ['rand', 'sine', 'tan', 'cos', 'log', 'x^y', 'hyp', 'sqrt'];
+    let opertionToPerf;
+    let val;
+
+    scientificOps.forEach(operator => {
+        if (operation.startsWith(operator)) {
+            const expression = operation.split('(');
+            console.log('exp', expression);
+            opertionToPerf = expression[0];
+            val = expression[1];
+        }
+    });
+    return { operation: opertionToPerf, value: val };
+}
+
+function science(operation = '', val = 0) {
+    if (operation == 'tan') {
+        return Math.tan(+val);
+    }
+
+    if (operation == 'sine') {
+        return Math.sin(+val);
+    }
+
+    if (operation == 'cos') {
+        return Math.co(+val);
+    }
+}

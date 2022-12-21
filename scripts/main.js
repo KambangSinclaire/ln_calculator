@@ -35,13 +35,25 @@ arithmeticOperators.forEach(operator => {
         let result;
 
         if (clickedOperator == '=') {
+            
             const { operation, value } = operationParser(operationsScreen.value);
+           
             if (operation && value) {
                 // This is a scientific operation
                 answerScreen.value = science(operation, value);
+                console.log("AnswerScreen",answerScreen.value);
             } else {
+                
+            try{
                 result = eval(operationsScreen.value);
+                console.log("result",result);
                 answerScreen.value = result;
+            }
+            catch{
+             console.log("error");
+             alert("Expression is not valid");
+            }
+              
             }
         } else {
             operationsScreen.value += clickedOperator;

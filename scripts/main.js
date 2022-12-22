@@ -67,7 +67,6 @@ arithmeticOperators.forEach(operator => {
                         // the minus operator should be the only operator that is added after another operator
                         if(calcMultDivOps.includes(operationsScreen.value[operationsScreen.value.length-1]) == true && clickedOperator == '-' ){
                             operationsScreen.value += clickedOperator;
-                            console.log('true');
                         }
                         else {
                             // cannot input an operator if the second to last operator and the clicked operator are same
@@ -75,7 +74,6 @@ arithmeticOperators.forEach(operator => {
                                 let currVal = operationsScreen.value;
                                 operationsScreen.value = currVal.substr(0, currVal.length - 1);
                                 operationsScreen.value += clickedOperator;
-                                console.log('false');
 
                             }
                             else if(calcMultDivOps.includes(operationsScreen.value[operationsScreen.value.length-2]) == false && calcMultDivOps.includes(clickedOperator) == true) {

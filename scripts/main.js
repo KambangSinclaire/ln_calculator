@@ -144,14 +144,14 @@ function operationParser(operation = '') {
 
 function science(operation = '', val = 0) {
     if (operation == 'tan') {
-        return Math.tan(+val);
+        return Math.tan(eval(val));
     }
 
     if (operation == 'sine') {
-        return Math.sin(+val);
+        return Math.sin(eval(val));
     }
 
     if (operation == 'cos') {
-        return Math.co(+val);
+        return Math.co(eval(val));
     }
 }

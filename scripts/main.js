@@ -48,7 +48,7 @@ arithmeticOperators.forEach(operator => {
             const { operation, value } = operationParser(operationsScreen.value);
             if (operation && value) {
                 // This is a scientific operation
-                answerScreen.value = science(operation, value);
+                answerScreen.value = science(operation, value, is_degree);
             } else {
                 result = eval(operationsScreen.value);
                 answerScreen.value = result;
@@ -110,6 +110,14 @@ allCalcFunctions.forEach(func => {
             let currVal = operationsScreen.value;
             operationsScreen.value = currVal.substr(0, currVal.length - 1);
         }
+
+        // Change calculator do radians
+        if (clickedFunction == 'RAD') {
+            is_degree=false;
+        }
+        if (clickedFunction == 'DEG') {
+            is_degree=true;
+        }
     })
 });
 
@@ -142,10 +150,27 @@ function operationParser(operation = '') {
     return { operation: opertionToPerf, value: val };
 }
 
-function science(operation = '', val = 0) {
-    if (operation == 'tan') {
-        return Math.tan(eval(val));
+function science(operation='', val = 0, is_degree = true) {
+    let value_to_return=0;
+    console.log(Math.cos(+radians_to_degrees(val)) );
+    switch(is_degree==true){
+        case true:
+            
+            operation =='tan' ? value_to_return = Math.tan(+radians_to_degrees(val))
+            :operation == 'sine' ? value_to_return = Math.sin(+radians_to_degrees(val))
+            :operation == 'cos' ? value_to_return = Math.cos(+radians_to_degrees(val))
+            :{};
+            break;
+
+        case false:
+            operation =='tan' ? value_to_return = Math.tan(+val)
+            :operation == 'sine' ? value_to_return = Math.sin(+val)
+            :operation == 'cos' ? value_to_return = Math.cos(+val)
+            :{};
+            console.log(value_to_return);
     }
+    
+    return value_to_return;
 
     if (operation == 'sine') {
         return Math.sin(eval(val));
@@ -154,4 +179,9 @@ function science(operation = '', val = 0) {
     if (operation == 'cos') {
         return Math.co(eval(val));
     }
+}
+
+//radians to degrees
+function radians_to_degrees(number){
+    return number*(Math.PI/180);
 }

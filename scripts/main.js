@@ -28,7 +28,7 @@ calcAddMinusOps = ['-', '+'];
 calcMultDivOps = ['*', '/'];
 
 // operation array
-let opScreenValues = [];
+var opScreenValues = [];
 
 // Listen for click events on digits
 calcDigits.forEach(digit => {
@@ -62,15 +62,12 @@ arithmeticOperators.forEach(operator => {
                 answerScreen.value = result;
             }
         } else {
-            //add our operation to the list
-            opScreenValues.push(event.target.innerText);
-            // operationsScreen.value += event.target.innerText;
-            operationsScreen.value = "";
-            operationsScreen.value += opScreenValues.join("");
-
+            
             // input 0 + the clicked operator if nothing is on screen
             if(operationsScreen.value.length == 0){
                 operationsScreen.value = `0${clickedOperator}`;
+                opScreenValues.push('0');
+                opScreenValues.push(clickedOperator);
                 return;
             }
 
@@ -82,25 +79,31 @@ arithmeticOperators.forEach(operator => {
                     // the minus operator should be the only operator that is added after another operator
                     if(calcMultDivOps.includes(operationsScreen.value[operationsScreen.value.length-1]) == true && clickedOperator == '-' ){
                         operationsScreen.value += clickedOperator;
+                        opScreenValues.push(event.target.innerText);
                     }
                     // cannot input an operator if the second to last operator and the clicked operator are same
                     if(calcMultDivOps.includes(operationsScreen.value[operationsScreen.value.length-2]) == false && calcMultDivOps.includes(clickedOperator) == false){
                         let currVal = operationsScreen.value;
                         operationsScreen.value = currVal.substr(0, currVal.length - 1);
+                        opScreenValues.pop();
                         operationsScreen.value += clickedOperator;
+                        opScreenValues.push(event.target.innerText);
 
                     }
                     if(calcMultDivOps.includes(operationsScreen.value[operationsScreen.value.length-2]) == false && calcMultDivOps.includes(clickedOperator) == true) {
                         // add * or / if the last value is a -
                         let currVal = operationsScreen.value;
                         operationsScreen.value = currVal.substr(0, currVal.length - 1);
+                        opScreenValues.pop();
                         operationsScreen.value += clickedOperator;
+                        opScreenValues.push(event.target.innerText);
                     }
                    
                 }
             }
             else {
                 operationsScreen.value += clickedOperator;
+                opScreenValues.push(event.target.innerText);
             }
         }
 

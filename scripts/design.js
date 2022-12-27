@@ -20,6 +20,7 @@ let buttonContainer = constructElement('div', { class: 'button-container' });
 let numericContainer = constructElement('div', { class: 'numeric-container' });
 let digitsContainer = constructElement('div', { class: 'digits-container' });
 
+let is_degree=true;
 const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const createdDigits = digits.map(digit => {
     let digitElement = constructElement('button', { class: digit });
@@ -30,8 +31,8 @@ const createdDigits = digits.map(digit => {
 appendChildren(digitsContainer, createdDigits);
 
 
-let functionContainer = constructElement('div', { class: 'function-container' }, {id: 'Submit'});
-const calcFunctions = ['ON', 'OFF', '2nd', 'M+', 'M-', 'Ans', 'CLR', 'DEL'];
+let functionContainer = constructElement('div', { class: 'function-container' });
+const calcFunctions = ['ON', 'OFF', '2nd', 'M+', 'M-', 'Ans', 'CLR', 'DEL', 'RAD', 'DEG'];
 const createdCalcFunctions = calcFunctions.map(item => {
     let calcFunctionElement = constructElement('button', { class: item });
     calcFunctionElement.textContent = item;

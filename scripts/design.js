@@ -3,8 +3,13 @@ let mainCalculatorContainer = document.querySelector('main.calculator-container'
 // Creating Calculator Screens
 let screenContainer = constructElement('div', { class: 'screen-container' });
 let opScreen = constructElement('input', { class: 'operations-screen' });
-let ansScreen = constructElement('input', { class: 'answer-screen' });
 
+let ansScreen = constructElement('input', { class: 'answer-screen' }, {name: 'label'});
+
+
+
+opScreen.setAttribute('id', 'userName');
+ansScreen.setAttribute('id', 'getUserName');
 // Append the two screens to the main screen container;
 screenContainer = appendChildren(screenContainer, [opScreen, ansScreen]);
 appendChildren(mainCalculatorContainer, [screenContainer]);

@@ -52,6 +52,7 @@ arithmeticOperators.forEach(operator => {
             } else {
                 result = eval(operationsScreen.value);
                 answerScreen.value = result;
+                
             }
         } else {
             // input 0 + the clicked operator if nothing is on screen
@@ -89,6 +90,7 @@ arithmeticOperators.forEach(operator => {
                 operationsScreen.value += clickedOperator;
             }
         }
+        
 
     })
 });
@@ -118,6 +120,18 @@ allCalcFunctions.forEach(func => {
         if (clickedFunction == 'DEG') {
             is_degree=true;
         }
+        if(clickedFunction == 'Ans'){
+            result = localStorage.getItem('label');
+            answerScreen.value = result;
+            operationsScreen.value = result;
+        }
+        if(clickedFunction == 'M+'){
+            localStorage.setItem('label', getUserName.value);
+        }
+
+        if(clickedFunction == 'M-'){
+            localStorage.removeItem('label')
+        }
     })
 });
 
@@ -135,7 +149,7 @@ scientificOperators.forEach(operator => {
 })
 
 function operationParser(operation = '') {
-    const scientificOps = ['rand', 'sine', 'tan', 'cos', 'log', 'x^y', 'hyp', 'sqrt'];
+    const scientificOps = ['rand', 'sin', 'tan', 'cos', 'log', 'x^y', 'hyp', 'sqrt'];
     let opertionToPerf;
     let val;
 

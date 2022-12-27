@@ -27,3 +27,5 @@ LN_Calculator is a project whose objective is to permit young programmers experi
 ## Gaurav Kumar
 
 ## Egbe Freedom
+
+## Joao Brito

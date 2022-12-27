@@ -80,6 +80,7 @@ allCalcFunctions.forEach(func => {
         if(clickedFunction == 'Ans'){
             result = localStorage.getItem('label')
             answerScreen.value = result;
+            operationsScreen.value = result;
         }
     })
 });

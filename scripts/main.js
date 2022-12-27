@@ -28,7 +28,7 @@ calcAddMinusOps = ['-', '+'];
 calcMultDivOps = ['*', '/'];
 
 // operation array
-var opScreenValues = [];
+let opScreenValues = [];
 
 // Listen for click events on digits
 calcDigits.forEach(digit => {
@@ -40,7 +40,6 @@ calcDigits.forEach(digit => {
         // operationsScreen.value += event.target.innerText;
         operationsScreen.value = "";
         operationsScreen.value += opScreenValues.join("");
-        console.log(opScreenValues);
     })
 });
 
@@ -68,7 +67,6 @@ arithmeticOperators.forEach(operator => {
             // operationsScreen.value += event.target.innerText;
             operationsScreen.value = "";
             operationsScreen.value += opScreenValues.join("");
-            console.log(opScreenValues);
 
             // input 0 + the clicked operator if nothing is on screen
             if(operationsScreen.value.length == 0){
@@ -130,7 +128,6 @@ allCalcFunctions.forEach(func => {
             operationsScreen.value = "";
             // add array contents to screen
             operationsScreen.value += opScreenValues.join("");
-            console.log(opScreenValues);
             
         }
 
@@ -153,7 +150,6 @@ scientificOperators.forEach(operator => {
         // operationsScreen.value += event.target.innerText;
         operationsScreen.value = "";
         operationsScreen.value += opScreenValues.join("");
-        console.log(opScreenValues);
         // const clickedScientificOperator = event.target.innerText;
         // operationsScreen.value += clickedScientificOperator + '(';
 

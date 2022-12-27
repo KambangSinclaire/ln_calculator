@@ -42,10 +42,12 @@ arithmeticOperators.forEach(operator => {
             } else {
                 result = eval(operationsScreen.value);
                 answerScreen.value = result;
+                
             }
         } else {
             operationsScreen.value += clickedOperator;
         }
+        
 
     })
 });
@@ -67,6 +69,18 @@ allCalcFunctions.forEach(func => {
             let currVal = operationsScreen.value;
             operationsScreen.value = currVal.substr(0, currVal.length - 1);
         }
+        //Add to storage
+        if(clickedFunction == 'M+'){
+            localStorage.setItem('label', getUserName.value);
+        }
+
+        if(clickedFunction == 'M-'){
+            localStorage.removeItem('label')
+        }
+        if(clickedFunction == 'Ans'){
+            result = localStorage.getItem('label')
+            answerScreen.value = result;
+        }
     })
 });
 
@@ -84,7 +98,7 @@ scientificOperators.forEach(operator => {
 })
 
 function operationParser(operation = '') {
-    const scientificOps = ['rand', 'sine', 'tan', 'cos', 'log', 'x^y', 'hyp', 'sqrt'];
+    const scientificOps = ['rand', 'sin', 'tan', 'cos', 'log', 'x^y', 'hyp', 'sqrt'];
     let opertionToPerf;
     let val;
 
@@ -104,11 +118,13 @@ function science(operation = '', val = 0) {
         return Math.tan(+val);
     }
 
-    if (operation == 'sine') {
-        return Math.sin(+val);
+    if (operation == 'sin') {
+        return Math.sin(+val)*(Math.PI/180);
     }
 
     if (operation == 'cos') {
-        return Math.co(+val);
+        return Math.cos(+val);
     }
 }
+
+
